@@ -1,0 +1,37 @@
+/*
+ * IRremote: IRsendDemo - demonstrates sending IR codes with IRsend
+ * An IR LED must be connected to Arduino PWM pin 3.
+ * Version 0.1 July, 2009
+ * Copyright 2009 Ken Shirriff
+ * http://arcfn.com
+ */
+
+
+#include <IRremote.h>
+
+IRsend irsend;
+// En bruto sera unsigned int powerOn[68] = {9000, -4400, 600, -550, 600, -550, 600, -550, 600, -550, 600, -550, 600, -550, 600, -550, 600, -550, 600, -1600, 650, -1600, 600, -1650, 600, -1600, 650, -1650, 600, -1600, 600, -1650, 600, -1600, 650, -1600, 650, -1600, 600, -1650, 600, -550, 600, -550, 600, -550, 600, -550, 600, -550, 600, -550, 600, -500, 600, -550, 600, -1650, 600, -1650, 600, -1650, 600, -1600, 600, -1650, 600};
+
+
+void setup()
+{
+}
+
+void loop() {
+
+	for (int i = 0; i < 3; i++) {
+		// irsend.sendRaw(powerOn, 68, 38);
+		irsend.sendNEC(0xFFE01F, 32);
+		delay(40);
+	}
+	delay(1000); //5 second delay between each signal burst
+
+for (int i = 0; i < 3; i++) {
+    // irsend.sendRaw(powerOn, 68, 38);
+    irsend.sendNEC(0xFF609F, 32);
+    delay(40);
+  }
+  delay(1000); //5 second delay between each signal burst
+ 
+}
+
